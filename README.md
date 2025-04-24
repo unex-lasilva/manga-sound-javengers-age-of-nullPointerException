@@ -19,7 +19,7 @@ Um par de fone de ouvido, a sua lista de reprodução favorita e pronto: você e
 | Integrante         | Levi Baptista | Mateus Queiroz | Murilo Marinho | Darlan Deivid | Joalisson Pinto |
 |--------------------|---------------|----------------|----------------|----------------|----------------|
 | **Levi Baptista**  |               |                |                |                |                |
-| **Mateus Queiroz** |               |                |                |                |                |
+| **Mateus Queiroz** |     10        |       10       |     10         |     10         |       10       |
 | **Murilo Marinho** |               |                |                |                |                |
 | **Darlan Deivid**  |               |                |                |                |                |
 | **Joalisson Pinto**|               |                |                |                |                |
