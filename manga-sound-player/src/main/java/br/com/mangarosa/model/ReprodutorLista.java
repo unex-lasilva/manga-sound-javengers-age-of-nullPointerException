@@ -1,7 +1,7 @@
-package drive.rede.com.br.model;
+package br.com.mangarosa.model;
 
-import drive.rede.com.br.model.ListaReproducao;
-import drive.rede.com.br.model.Musica;
+import br.com.mangarosa.model.ListaReproducao;
+import br.com.mangarosa.model.Musica;
 
 import javax.sound.sampled.*;
 import java.io.File;
