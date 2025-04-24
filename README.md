@@ -24,4 +24,3 @@ Um par de fone de ouvido, a sua lista de reprodução favorita e pronto: você e
 | **Darlan Deivid**  |               |                |                |               |                 |
 | **Joalisson Pinto**| 10            | 10              | 10             | 10            | 10              |
 | **Nota**           | **  **        | **  **         | ** **          | ****          | ****            |
-
