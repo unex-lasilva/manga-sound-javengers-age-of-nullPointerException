@@ -1,5 +1,5 @@
 // ListaReproducao.java
-package drive.rede.com.br.model;
+package br.com.mangarosa.model;
 
 import java.util.ArrayList;
 import java.util.List;
