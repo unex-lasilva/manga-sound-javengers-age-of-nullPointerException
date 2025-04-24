@@ -1,9 +1,9 @@
-package drive.rede.com.br;
 
-import drive.rede.com.br.controller.MangaController;
-import drive.rede.com.br.model.Musica;
-import drive.rede.com.br.model.ListaReproducao;
-import drive.rede.com.br.player.Player;
+package br.com.mangarosa;
+import br.com.mangarosa.controller.MangaController;
+import br.com.mangarosa.model.Musica;
+import br.com.mangarosa.model.ListaReproducao;
+import br.com.mangarosa.player.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package drive.rede.com.br.model;
+package br.com.mangarosa.model;
 
 public class Musica {
     private String nome;
