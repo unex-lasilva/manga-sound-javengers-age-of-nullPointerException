@@ -21,7 +21,7 @@ Um par de fone de ouvido, a sua lista de reprodução favorita e pronto: você e
 | **Levi Baptista**  |               |                |                |                |                |
 | **Mateus Queiroz** |     10        |       10       |     10         |     10         |       10       |
 | **Murilo Marinho** |               |                |                |                |                |
-| **Darlan Deivid**  |               |                |                |                |                |
+| **Darlan Deivid**  |     10        |     10         |      10        |       10       |       10       |
 | **Joalisson Pinto**|               |                |                |                |                |
 | **Nota**           | **  **        | **  **         | ** **          | ****           | ****           |
 
