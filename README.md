@@ -17,10 +17,10 @@ Um par de fone de ouvido, a sua lista de reprodução favorita e pronto: você e
 
 # Avaliação da Equipe 
 | Integrante         | Levi Baptista | Mateus Queiroz | Murilo Marinho | Darlan Deivid | Joalisson Pinto |
-|--------------------|---------------|----------------|----------------|---------------|-----------------|
-| **Levi Baptista**  |               |                |                |               |                 |
-| **Mateus Queiroz** |               |                |                |               |                 |
-| **Murilo Marinho** |               |                |                |               |                 |
-| **Darlan Deivid**  |               |                |                |               |                 |
-| **Joalisson Pinto**| 10            | 10              | 10             | 10            | 10              |
-| **Nota**           | **  **        | **  **         | ** **          | ****          | ****            |
+|--------------------|---------------|----------------|----------------|----------------|----------------|
+| **Levi Baptista**  |    10         |    10          |    10          |   10           |  10            |
+| **Mateus Queiroz** |     10        |       10       |     10         |     10         |       10       |
+| **Murilo Marinho** |    10         |    10          |    10          |   10           |  10            |
+| **Darlan Deivid**  |     10        |     10         |      10        |       10       |       10       |
+| **Joalisson Pinto**|    10         |    10          |    10          |   10           |  10            |
+| **Nota**           | **  **        | **  **         | ** **          | ****           | ****           |
