@@ -3,7 +3,7 @@ package br.com.mangarosa;
 import br.com.mangarosa.controller.MangaController;
 import br.com.mangarosa.model.Musica;
 import br.com.mangarosa.model.ListaReproducao;
-import br.com.mangarosa.player.Player;
+import br.com.mangarosa.model.ReprodutorLista;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,20 +20,28 @@ public class MangaSoundApplication {
         MangaController controller = new MangaController();
         List<Musica> repositorio = new ArrayList<>();
         List<ListaReproducao> playlists = new ArrayList<>();
-        Player player;
+        ReprodutorLista reprodutorLista = new ReprodutorLista();
+
+        try {
+            Files.createDirectories(Paths.get("repositorio"));
+        } catch (IOException e) {
+            System.out.println("Erro ao criar diretório repositório: " + e.getMessage());
+        }
 
         while (true) {
-            System.out.println("\n MangaSound - Menu Principal");
+            System.out.println("\nMangaSound - Menu Principal");
             System.out.println("1. Adicionar Música ao Repositório");
             System.out.println("2. Criar Lista de Reprodução");
             System.out.println("3. Editar Lista de Reprodução");
             System.out.println("4. Executar Lista de Reprodução");
             System.out.println("5. Sair");
             System.out.print("Escolha: ");
-            int opc = Integer.parseInt(sc.nextLine());
 
-            switch (opc) {
-                case 1:
+            try {
+                int opc = Integer.parseInt(sc.nextLine());
+
+                switch (opc) {
+                    case 1:
                     System.out.print("Caminho do arquivo .wav: ");
                     Path src = Paths.get(sc.nextLine());
                     Path dst = Paths.get("repositorio", src.getFileName().toString());
@@ -57,10 +65,23 @@ public class MangaSoundApplication {
 
                 case 2:
                     System.out.print("Nome da nova lista: ");
-                    String nomeLista = sc.nextLine();
-                    ListaReproducao lr = new ListaReproducao(nomeLista);
-                    playlists.add(lr);
-                    controller.criarListaReproducao(nomeLista);
+                    String nomeLista = sc.nextLine().trim();
+
+                    if (nomeLista.isEmpty()) {
+                        System.out.println("O nome da lista não pode ser vazio!");
+                        break;
+                    }
+
+                    boolean listaExiste = playlists.stream()
+                            .anyMatch(l -> l.getNome().equalsIgnoreCase(nomeLista));
+
+                    if (listaExiste) {
+                        System.out.println("Já existe uma lista com esse nome!");
+                        break;
+                    }
+
+                    ListaReproducao novaLista = new ListaReproducao(nomeLista);
+                    playlists.add(novaLista);
                     break;
 
                 case 3:
@@ -97,33 +118,33 @@ public class MangaSoundApplication {
                             }
                             System.out.print("Índice da música: ");
                             int indiceMusica  = Integer.parseInt(sc.nextLine());
-                            playlistSelecionada .addMusica(repositorio.get(indiceMusica ));
+                            playlistSelecionada.addMusica(repositorio.get(indiceMusica ));
                             System.out.println(" Música adicionada à playlist.");
                             break;
                         case 2:
-                            for (int i = 0; i < playlistSelecionada .tamanho(); i++) {
-                                System.out.println(i + ": " + playlistSelecionada .obterMusica(i));
+                            for (int i = 0; i < playlistSelecionada.tamanho(); i++) {
+                                System.out.println(i + ": " + playlistSelecionada.obterMusica(i));
                             }
                             System.out.print("Índice origem: ");
                             int from = Integer.parseInt(sc.nextLine());
                             System.out.print("Índice destino: ");
                             int to = Integer.parseInt(sc.nextLine());
-                            Musica mov = playlistSelecionada .obterMusica(from);
-                            playlistSelecionada .removerMusica(from);
-                            playlistSelecionada .inserirMusicaEm(to, mov);
+                            Musica mov = playlistSelecionada.obterMusica(from);
+                            playlistSelecionada.removerMusica(from);
+                            playlistSelecionada.inserirMusicaEm(to, mov);
                             System.out.println(" Música movida.");
                             break;
                         case 3:
-                            for (int i = 0; i < playlistSelecionada .tamanho(); i++) {
-                                System.out.println(i + ": " + playlistSelecionada .obterMusica(i));
+                            for (int i = 0; i < playlistSelecionada.tamanho(); i++) {
+                                System.out.println(i + ": " + playlistSelecionada.obterMusica(i));
                             }
                             System.out.print("Índice da música: ");
                             int rem = Integer.parseInt(sc.nextLine());
-                            playlistSelecionada .removerMusica(rem);
+                            playlistSelecionada.removerMusica(rem);
                             System.out.println(" Música removida.");
                             break;
                         case 4:
-                            String nm = playlistSelecionada .getNome();
+                            String nm = playlistSelecionada.getNome();
                             playlists.remove(idx);
                             controller.excluirListaReproducao(nm);
                             System.out.println(" Lista '" + nm + "' excluída.");
@@ -133,51 +154,50 @@ public class MangaSoundApplication {
                     }
                     break;
 
-                case 4:
-                    if (playlists.isEmpty()) {
-                        System.out.println(" Não há listas para reproduzir.");
-                        break;
-                    }
-                    System.out.println("Listas: ");
-                    for (int i = 0; i < playlists.size(); i++) {
-                        System.out.println(i + ": " + playlists.get(i).getNome());
-                    }
-                    System.out.print("Escolha: ");
-                    int psel = Integer.parseInt(sc.nextLine());
-                    ListaReproducao play = playlists.get(psel);
-                    player = new Player(play);
-                    try {
-                        player.tocar();
-                    } catch (Exception e) {
-                        System.out.println(" Erro: " + e.getMessage());
-                        break;
-                    }
-                    boolean playing = true;
-                    while (playing) {
-                        System.out.print("[P]-Pausar [C]-Continuar [N]-Next [B]-Back [R]-Reiniciar [E]-Encerrar: ");
-                        String cmd = sc.nextLine().trim().toUpperCase();
+                    case 4:
+                        if (playlists.isEmpty()) {
+                            System.out.println("Não há listas para reproduzir.");
+                            break;
+                        }
+                        System.out.println("Listas: ");
+                        for (int i = 0; i < playlists.size(); i++) {
+                            System.out.println(i + ": " + playlists.get(i).getNome());
+                        }
+                        System.out.print("Escolha: ");
                         try {
-                            switch (cmd) {
-                                case "P": player.pausar(); break;
-                                case "C": player.continuar(); break;
-                                case "N": player.proxima(); break;
-                                case "B": player.anterior(); break;
-                                case "R": player.reiniciar(); break;
-                                case "E": player.parar(); playing = false; break;
-                                default: System.out.println(" Inválido.");
+                            int sel = Integer.parseInt(sc.nextLine());
+                            ListaReproducao play = playlists.get(sel);
+
+                            controller.startPlayer(play);
+
+                            boolean playing = true;
+                            while (playing) {
+                                System.out.print("[P]-Pausar [C]-Continuar [N]-Next [B]-Back [R]-Reiniciar [E]-Encerrar: ");
+                                String cmd = sc.nextLine().trim().toUpperCase();
+                                switch (cmd) {
+                                    case "P": controller.pausarMusica();break;
+                                    case "C": controller.continuarMusica();break;
+                                    case "N": controller.proximaMusica();break;
+                                    case "B": controller.musicaAnterior();break;
+                                    case "R": controller.reiniciarMusica();break;
+                                    case "E": controller.pararLista();playing = false;break;
+                                    default:  System.out.println("Inválido.");
+                                }
                             }
                         } catch (Exception e) {
-                            System.out.println(" Erro de reprodução: " + e.getMessage());
+                            System.out.println("Escolha inválida ou erro: " + e.getMessage());
                         }
-                    }
-                    break;
+                        break;
 
-                case 5:
+                    case 5:
                     System.out.println(" Saindo...");
                     sc.close();
                     return;
                 default:
                     System.out.println(" Opção inválida.");
+            }
+        } catch (NumberFormatException e) {
+                System.out.println("Por favor, digite um número válido.");
             }
         }
     }

@@ -1,16 +1,24 @@
 package br.com.mangarosa.controller;
 
+import br.com.mangarosa.model.ListaReproducao;
 import br.com.mangarosa.model.Musica;
+import br.com.mangarosa.model.ReprodutorLista;
+import javax.sound.sampled.Clip;
 import java.util.LinkedList;
 import java.util.List;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 
 public class MangaController {
+    private Player player;
     private List<Musica> repositorioMusica;
     private List<List<Musica>> listasReproducao;
     private List<String> nomesListas;
     private int indiceListaAtual;
     private int indiceMusicaAtual;
     private boolean tocando;
+    private ReprodutorLista reprodutorLista;
 
     public MangaController() {
         repositorioMusica = new LinkedList<>();
@@ -19,6 +27,62 @@ public class MangaController {
         tocando = false;
         indiceListaAtual = -1;
         indiceMusicaAtual = -1;
+    }
+
+    public void startPlayer(ListaReproducao lista) throws Exception {
+        if (player != null) {
+            player.parar();
+        }
+        player = new Player(lista);
+        player.tocar();
+    }
+
+    public void pausarMusica() {
+        if (player != null) {
+            player.pausar();
+        } else {
+            System.out.println("Nenhuma reprodução ativa para pausar.");
+        }
+    }
+
+    public void continuarMusica() {
+        if (player != null) {
+            try {
+                player.continuar();
+            } catch (Exception e) {
+                System.out.println("Erro ao continuar: " + e.getMessage());
+            }
+        }
+    }
+
+    public void proximaMusica() {
+        if (player != null) {
+            try {
+                player.proxima();
+            } catch (Exception e) {
+                System.out.println("Erro ao avançar: " + e.getMessage());
+            }
+        }
+    }
+
+    public void musicaAnterior() {
+        if (player != null) {
+            try {
+                player.anterior();
+            } catch (Exception e) {
+                System.out.println("Erro ao voltar: " + e.getMessage());
+            }
+        }
+    }
+
+    public void reiniciarMusica() {
+        if (player != null) {
+            try {
+                player.reiniciar();
+            } catch (Exception e) {
+                System.out.println("Erro ao reiniciar: " + e.getMessage());
+            }
+        }
     }
 
     public void adicionarMusica(String titulo, String path, String nomeArtista) {
@@ -84,13 +148,6 @@ public class MangaController {
         executarMusica();
     }
 
-    public void pausarMusica() {
-        if (tocando) {
-            tocando = false;
-            System.out.println("Música pausada.");
-        }
-    }
-
     public void executarMusica() {
         if (tocando && indiceListaAtual >= 0) {
             List<Musica> lista = listasReproducao.get(indiceListaAtual);
@@ -122,7 +179,11 @@ public class MangaController {
     }
 
     public void pararLista() {
-        tocando = false;
+        if (player != null) {
+            player.pausar();
+        } else {
+            System.out.println("Nenhuma reprodução ativa para pausar.");
+        }
         indiceListaAtual = -1;
         indiceMusicaAtual = -1;
         System.out.println("Reprodução parada.");
@@ -137,5 +198,91 @@ public class MangaController {
         System.out.println("Música não encontrada: " + titulo);
         return null;
     }
-}
 
+    public static class Player {
+        private ListaReproducao lista;
+        private Clip clip;
+        private AudioInputStream stream;
+        private Long frameAtual;
+        private String status = "stop";
+
+        public Player(ListaReproducao lista) {
+            this.lista = lista;
+        }
+
+        public void tocar() throws Exception {
+            Musica m = lista.getMusicaAtual();
+            if (m == null) {
+                System.out.println("Nenhuma música disponível na lista.");
+                return;
+            }
+            if (clip != null && clip.isRunning()) {
+                clip.stop();
+                clip.close();
+            }
+
+            File f = new File(m.getCaminho());
+            stream = AudioSystem.getAudioInputStream(f);
+            clip = AudioSystem.getClip();
+            clip.open(stream);
+            clip.start();
+            status = "play";
+            System.out.println(" Tocando: " + m);
+        }
+
+        public void pausar() {
+            if (clip != null && status.equals("play")) {
+                frameAtual = clip.getMicrosecondPosition();
+                clip.stop();
+                status = "pause";
+                System.out.println(" Música pausada.");
+            }
+        }
+
+        public void continuar() throws Exception {
+            if (clip != null && status.equals("pause")) {
+                clip.setMicrosecondPosition(frameAtual);
+                clip.start();
+                status = "play";
+                System.out.println(" Continuando música.");
+            }
+        }
+
+        public void parar() {
+            if (clip != null) {
+                clip.stop();
+                clip.close();
+                status = "stop";
+                System.out.println(" Música parada.");
+            }
+        }
+
+        public void proxima() throws Exception {
+            parar();
+            lista.proximaMusica();
+            tocar();
+        }
+
+        public void anterior() throws Exception {
+            if (clip != null) {
+                long posUS = clip.getMicrosecondPosition();
+                if (posUS > 10_000_000L) {
+                    clip.setMicrosecondPosition(0);
+                    clip.start();
+                    status = "play";
+                    System.out.println(" Música reiniciada.");
+                    return;
+                }
+            }
+            parar();
+            lista.musicaAnterior();
+            tocar();
+        }
+
+        public void reiniciar() throws Exception {
+            parar();
+            lista.reiniciar();
+            tocar();
+        }
+    }
+}

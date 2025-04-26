@@ -11,6 +11,7 @@ public class ListaReproducao {
     private String nome;
     private List<Musica> musicas;
     private int atual = 0;
+    private String titulo;
 
     public ListaReproducao(String nome) {
         this.nome = nome;
@@ -73,4 +74,11 @@ public class ListaReproducao {
         return musicas;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 }

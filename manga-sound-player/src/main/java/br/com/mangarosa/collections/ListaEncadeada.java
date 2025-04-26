@@ -98,7 +98,7 @@ public class ListaEncadeada {
      */
     public boolean remove(int position) {
         if (position < 0 || position >= tamanho) {
-            return false;
+            throw new IndexOutOfBoundsException("Posição inválida.");
         }
 
         if (position == 0) {
@@ -120,6 +120,9 @@ public class ListaEncadeada {
      * @return {@code true} se a lista foi limpa com sucesso, {@code false} caso contrário.
      */
     public boolean clear() {
+        if(tamanho == 0){
+            return false;
+        }
         cabeca = null;
         tamanho = 0;
         return true;
