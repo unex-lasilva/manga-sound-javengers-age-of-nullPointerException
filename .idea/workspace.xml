@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0cd96723-c1e1-46cd-b90b-c7a2f9e92865" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
-      <change beforePath="$PROJECT_DIR$/manga-sound-player/src/main/java/model/ListaReproducao.java" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/src/main/java/model/ListaReproducao.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/MangaSoundApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/MangaSoundApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/collections/ListaEncadeada.java" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/collections/ListaEncadeada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/controller/MangaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/controller/MangaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/model/ListaReproducao.java" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/model/ListaReproducao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/model/ReprodutorLista.java" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/src/main/java/br/com/mangarosa/model/ReprodutorLista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/target/classes/br/com/mangarosa/MangaSoundApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/target/classes/br/com/mangarosa/MangaSoundApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/target/classes/br/com/mangarosa/collections/ListaEncadeada.class" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/target/classes/br/com/mangarosa/collections/ListaEncadeada.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga-sound-player/target/test-classes/br/com/mangarosa/collections/ListaEncadeadaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/manga-sound-player/target/test-classes/br/com/mangarosa/collections/ListaEncadeadaTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,25 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-
-    &quot;assignee&quot;: &quot;DeividSkii&quot;
-    &quot;assignee&quot;: &quot;levi-ferreira-baptista&quot;
-
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "levi-ferreira-baptista"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-
-    &quot;url&quot;: &quot;https://github.com/unex-lasilva/manga-sound-javengers-age-of-nullPointerException&quot;,
-    &quot;accountId&quot;: &quot;62bcb3a0-37e7-48f9-90f1-0c813a50af8b&quot;
-
-    &quot;url&quot;: &quot;https://github.com/unex-lasilva/manga-sound-javengers-age-of-nullPointerException.git&quot;,
-    &quot;accountId&quot;: &quot;b04fe13e-035b-4829-a64a-ca296b11a665&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/unex-lasilva/manga-sound-javengers-age-of-nullPointerException.git",
+    "accountId": "1f107dad-3ac1-43be-b789-dfa712754c4e"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -56,23 +54,21 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.MangaSoundApplication.executor": "Run",
     "JUnit.ListaEncadeadaTest.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feat/reprodutor__lista",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/adm/Desktop/teste/manga-sound-javengers-age-of-nullPointerException/manga-sound-player/src/main/java/br/com/mangarosa",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "#7 on feat/lista__reproducao",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/levib/manga-sound-javengers-age-of-nullPointerException",
     "onboarding.tips.debug.path": "/Users/lasilva/Documents/UNEX/GitHub-Templates/manga-sound-template/manga-sound/test/src/Main.java",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -82,6 +78,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\adm\Desktop\teste\manga-sound-javengers-age-of-nullPointerException\manga-sound-player\src\main\java\br\com\mangarosa" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="br.com.mangarosa.collections" />
     </key>
@@ -107,14 +106,6 @@
         <item itemvalue="JUnit.ListaEncadeadaTest" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

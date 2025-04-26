@@ -1,5 +1,6 @@
 package br.com.mangarosa.model;
 
+import br.com.mangarosa.controller.MangaController;
 import br.com.mangarosa.model.ListaReproducao;
 import br.com.mangarosa.model.Musica;
 
@@ -12,12 +13,14 @@ public class ReprodutorLista {
     private ListaReproducao listaReproducao;
     private String status;
     private Clip clip;
+    private MangaController controller;
 
     public ReprodutorLista() {
         this.status = "Parado";
     }
 
-    public ReprodutorLista(ListaReproducao listaReproducao) {
+    public ReprodutorLista(ListaReproducao listaReproducao, MangaController controller) {
+        this.controller = controller;
         this.listaReproducao = listaReproducao;
         this.status = "Parado";
     }
@@ -32,6 +35,9 @@ public class ReprodutorLista {
 
     public void play() {
         if (listaReproducao == null || listaReproducao.getMusicas().isEmpty()) {
+            System.out.println(listaReproducao.tamanho());
+            System.out.println(listaReproducao.isVazia());
+            System.out.println(listaReproducao);
             System.out.println("Lista de reprodução vazia ou não definida.");
             return;
         }
@@ -69,7 +75,7 @@ public class ReprodutorLista {
 
     public void restartMusica() {
         if (clip != null) {
-            clip.setFramePosition(0);
+            clip.setMicrosecondPosition(0);
             clip.start();
             status = "Reiniciada";
             System.out.println("Música reiniciada.");
